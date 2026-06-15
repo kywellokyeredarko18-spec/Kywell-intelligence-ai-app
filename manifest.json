@@ -1,6 +1,6 @@
 {
-  "name": "KYWELL INTELLIGENCE AI APP",
-  "short_name": "KYWELL AI",
+  "name": "Kywell intelligence AI APP",
+  "short_name": "Kywell",
   "description": "An offline advanced-maths AI assistant: algebra, calculus, equation solving and more.",
   "lang": "en",
   "start_url": "./index.html",
