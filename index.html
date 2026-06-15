@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="theme-color" content="#0b1f3a" />
+  <meta name="description" content="KYWELL INTELLIGENCE AI APP — an advanced maths assistant that solves algebra, calculus, equations and more, fully offline." />
+  <title>KYWELL INTELLIGENCE AI APP</title>
+
+  <!-- PWA / installable on phones -->
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="KYWELL AI" />
+  <meta name="mobile-web-app-capable" content="yes" />
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="phone">
+    <!-- Lock / setup screen -->
+    <section id="lock" class="lock">
+      <div class="lock-card">
+        <span class="lock-mark">∑</span>
+        <h1 class="lock-title">KYWELL INTELLIGENCE</h1>
+        <p class="lock-sub">Advanced Maths AI</p>
+
+        <!-- Setup (first launch) -->
+        <div id="setupView" class="lock-view hidden">
+          <p class="lock-hint">Welcome! Secure your app to continue. Register your fingerprint / face, or create a password (you can do both).</p>
+          <button id="setupBiometric" class="lock-btn primary">
+            <span class="ico">☝</span> Register fingerprint / face
+          </button>
+          <div class="lock-or"><span>or create a password</span></div>
+          <input id="setupPass" class="lock-input" type="password" placeholder="New password (min 4 chars)" autocomplete="new-password" />
+          <input id="setupPass2" class="lock-input" type="password" placeholder="Confirm password" autocomplete="new-password" />
+          <button id="setupPassBtn" class="lock-btn">Save password</button>
+          <p id="setupMsg" class="lock-msg"></p>
+        </div>
+
+        <!-- Unlock (returning) -->
+        <div id="unlockView" class="lock-view hidden">
+          <p class="lock-hint">Unlock to enter.</p>
+          <button id="unlockBiometric" class="lock-btn primary hidden">
+            <span class="ico">☝</span> Unlock with fingerprint / face
+          </button>
+          <div id="unlockOr" class="lock-or hidden"><span>or use your password</span></div>
+          <input id="unlockPass" class="lock-input hidden" type="password" placeholder="Password" autocomplete="current-password" />
+          <button id="unlockPassBtn" class="lock-btn hidden">Unlock</button>
+          <p id="unlockMsg" class="lock-msg"></p>
+          <button id="resetBtn" class="lock-reset">Forgot? Reset app security</button>
+        </div>
+      </div>
+    </section>
+
+    <header class="app-bar hidden" id="appBar">
+      <div class="brand">
+        <span class="brand-mark">∑</span>
+        <div class="brand-text">
+          <span class="brand-name">KYWELL INTELLIGENCE</span>
+          <span class="brand-sub">Advanced Maths AI</span>
+        </div>
+      </div>
+      <div class="app-bar-actions">
+        <button id="installBtn" class="icon-btn hidden" title="Install app" aria-label="Install app">⬇</button>
+        <button id="clearBtn" class="icon-btn" title="Clear chat" aria-label="Clear chat">⟲</button>
+      </div>
+    </header>
+
+    <main id="chat" class="chat hidden" aria-live="polite"></main>
+
+    <div id="chips" class="chips hidden">
+      <button class="chip" data-q="differentiate x^3 + 2x^2 - 5x + 1">d/dx x³+2x²−5x+1</button>
+      <button class="chip" data-q="integrate sin(x)*x dx">∫ x·sin(x) dx</button>
+      <button class="chip" data-q="solve x^2 - 5x + 6 = 0 for x">solve x²−5x+6=0</button>
+      <button class="chip" data-q="factor x^2 - 9">factor x²−9</button>
+      <button class="chip" data-q="simplify (x^2 - 1)/(x - 1)">simplify</button>
+      <button class="chip" data-q="limit of (sin(x))/x as x approaches 0">limit</button>
+      <button class="chip" data-q="2^10 + sqrt(144)">2¹⁰ + √144</button>
+    </div>
+
+    <form id="composer" class="composer hidden" autocomplete="off">
+      <input id="input" class="input" type="text" inputmode="text"
+             placeholder="Ask a maths question…" aria-label="Ask a maths question" />
+      <button id="send" class="send" type="submit" aria-label="Send">➤</button>
+    </form>
+  </div>
+
+  <script src="vendor/nerdamer.all.min.js"></script>
+  <script src="app.js"></script>
+  <script>
+    // Register the service worker so the app works offline once installed.
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", function () {
+        navigator.serviceWorker.register("sw.js").catch(function () {});
+      });
+    }
+  </script>
+</body>
+</html>
