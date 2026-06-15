@@ -64,7 +64,7 @@ python3 -m http.server 8000
 | `index.html` | Lock screen + chat UI, PWA meta + service-worker registration |
 | `style.css` | Mobile-first styling |
 | `app.js` | Lock screen (WebAuthn + password), maths engine, install prompt |
-| `manifest.webmanifest` | PWA manifest (name, icons, display mode) |
+| `manifest.json` | PWA manifest (name, icons, display mode) |
 | `sw.js` | Service worker — offline app-shell cache |
 | `icons/` | App icons (192/512/maskable, apple-touch, favicon) |
 | `vendor/nerdamer.all.min.js` | Bundled offline symbolic-maths engine |

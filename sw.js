@@ -1,12 +1,12 @@
 /* KYWELL INTELLIGENCE AI APP — service worker
  * Caches the app shell so the app works fully offline once installed. */
-var CACHE = "kywell-ai-v1";
+var CACHE = "kywell-ai-v2";
 var ASSETS = [
   "./",
   "./index.html",
   "./style.css",
   "./app.js",
-  "./manifest.webmanifest",
+  "./manifest.json",
   "./vendor/nerdamer.all.min.js",
   "./icons/icon-192.png",
   "./icons/icon-512.png",
